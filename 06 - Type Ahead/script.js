@@ -86,8 +86,21 @@ function displayMatches() {
   suggestions.innerHTML = html;
 }
 
+function displayNone() {
+  if (searchInput.value == "") {
+    suggestions.innerHTML = `
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    `;
+  }
+}
+
 const searchInput = document.querySelector(".search");
 const suggestions = document.querySelector(".suggestions");
 
+const form = document.querySelector(".search-form");
+
 // searchInput.addEventListener("change", displayMatches);
 searchInput.addEventListener("keyup", displayMatches);
+
+form.addEventListener("keyup", displayNone);
